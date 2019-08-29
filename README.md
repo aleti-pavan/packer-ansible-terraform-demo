@@ -15,7 +15,7 @@ Once created if you put IP address of ec2 into the browser, it should show the w
 ## Usage
 
 Prior to running, make sure you have
-1. awscli installed and configured (both `packer` and `terraform` uses these credentials)
+1. awscli installed and configured (both `packer` and `terraform` uses this configuration)
 2. packer and terraform installed.
 
 configure `awscli` if it's not already configured. [configure awscli](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
