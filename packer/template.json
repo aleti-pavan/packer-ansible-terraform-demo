@@ -1,0 +1,44 @@
+
+{
+    "builders": [{
+        "type": "amazon-ebs",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "region": "us-east-1",
+        "source_ami_filter": {
+            "filters": {
+                "virtualization-type": "hvm",
+                "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+                "root-device-type": "ebs"
+            },
+            "owners": ["099720109477"],
+            "most_recent": true
+        },
+        "instance_type": "t2.micro",
+        "ssh_username": "ubuntu",
+        "ami_name": "example-ami-packer",
+        "force_deregister": true
+    }],
+    "_comment": "Running Ansible roles on the image",
+    "provisioners": [
+      {
+        "type": "shell",
+        "script": "scripts/ansible.sh"
+      },
+      {
+        "type": "ansible-local",
+        "playbook_file": "../ansible/site.yml",
+        "role_paths": [
+          "../ansible/roles/git",
+          "../ansible/roles/mysql",
+          "../ansible/roles/nginx",
+          "../ansible/roles/growlerfriday"
+        ],
+        "group_vars": "../ansible/group_vars"
+      },
+      {
+        "type": "shell",
+        "script": "scripts/cleanup.sh"
+      }
+    ]
+}

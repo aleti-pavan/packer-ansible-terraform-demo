@@ -1,0 +1,17 @@
+---
+- name: Clone growlerfriday
+  git:
+    repo: https://github.com/alkrauss48/growler-friday.git
+    dest: /var/www/html/growler-friday
+
+- name: Copy growlerfriday nginx configuration to sites-available
+  template:
+    src: templates/growlerfriday.conf.j2
+    dest: /etc/nginx/sites-available/growlerfriday.conf
+
+- name: Create sites-enabled symlink for nginx growlerfriday port 80 configuration
+  file:
+    src: /etc/nginx/sites-available/growlerfriday.conf
+    dest: /etc/nginx/sites-enabled/growlerfriday.conf
+    state: link
+  notify: restart nginx

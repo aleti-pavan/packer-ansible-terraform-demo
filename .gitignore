@@ -1,0 +1,4 @@
+*.retry
+.env
+.terraform
+*.tfstate*

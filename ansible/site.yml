@@ -1,0 +1,10 @@
+---
+- name: Install Git, MySQL, Nginx, and projects
+  hosts: all
+  become: yes
+
+  roles:
+    - git
+    - mysql
+    - nginx
+    - growlerfriday

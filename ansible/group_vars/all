@@ -1,0 +1,4 @@
+user: root
+
+# You shouldn't need to change this.
+mysql_port: 3306
