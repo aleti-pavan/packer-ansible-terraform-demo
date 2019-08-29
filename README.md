@@ -34,7 +34,31 @@ terraform init; terraform plan; terraform apply -auto-approve;
 
 ```
 
-above command would show the EC2 public ip, locate the ip into browser to see the website resembles `growlerfriday.com`
+
+
+Above command would show the EC2 public ip, locate the ip into browser to see the website resembles `growlerfriday.com`
+
+
+
+
+
+## Destroy EC2 and Packer AMI
+
+You will have to destroy created infrastructure in order to avoid any changes from AWS. Following steps would destroys the EC2 instance and also the AMI created by packer.
+
+```bash
+
+cd packer-ansible-terraform-demo/terraform
+
+terraform destroy -auto-approve
+
+aws ec2 deregister-image --image-id <image-id> (which is given by packer)
+
+aws ec2 delete-snapshot --snapshot-id <snapshot-id> (take from aws console)
+
+
+
+Login to AWS Console and verify the EC2 Dashboard on the right region to make sure all of the created infrastructure (EC2 & AMI) has been deleted.
 
 
 
