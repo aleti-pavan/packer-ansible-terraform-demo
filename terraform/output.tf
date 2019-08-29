@@ -1,5 +1,5 @@
 output "publicIp" {
-    value = "${aws_instance.ec2.*.public_ip}"
+    value = "${aws_instance.ec2.public_ip}"
 }
 
 output "Login-directly" {
