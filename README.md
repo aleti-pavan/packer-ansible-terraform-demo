@@ -32,12 +32,22 @@ cd ../terraform
 
 terraform init; terraform plan; terraform apply -auto-approve;
 
+
+
 ```
 
+## Test
 
+terraform execution returns 3 outputs like below, in your case IP address will be different to the below
 
-Above command would show the EC2 public ip, locate the ip into browser to see the website resembles `growlerfriday.com`
+```
+Login-with-Key = ssh -i terraform-key ubuntu@3.84.111.178
+curl = curl http://3.84.111.178
+publicIp = 3.84.111.178
 
+```
+
+you can use curl output to test on the command line or locate the ip into browser to see the website resembles `growlerfriday.com`
 
 
 
@@ -55,6 +65,7 @@ terraform destroy -auto-approve
 aws ec2 deregister-image --image-id <image-id> (which is given by packer)
 
 aws ec2 delete-snapshot --snapshot-id <snapshot-id> (take from aws console)
+
 
 ```
 
