@@ -47,7 +47,7 @@ publicIp = 3.84.111.178
 
 ```
 
-you can use curl output to test on the command line or locate the ip into browser to see the website resembles `growlerfriday.com`
+you can use `curl output` to test on the command line or `locate the ip into browser` to see the website resembles `growlerfriday.com`
 
 
 
