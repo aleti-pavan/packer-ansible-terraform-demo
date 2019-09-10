@@ -40,5 +40,14 @@
         "type": "shell",
         "script": "scripts/cleanup.sh"
       }
+    ],
+    "post-processors": [
+      [
+        {
+          "output": "manifest.json",
+          "strip_path": true,
+          "type": "manifest"
+        }
+      ]
     ]
 }

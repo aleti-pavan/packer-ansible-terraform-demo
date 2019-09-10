@@ -1,7 +1,7 @@
 ---
 - name: Clone growlerfriday
   git:
-    repo: https://github.com/alkrauss48/growler-friday.git
+    repo: https://github.com/aleti-pavan/growler-friday.git
     dest: /var/www/html/growler-friday
 
 - name: Copy growlerfriday nginx configuration to sites-available
