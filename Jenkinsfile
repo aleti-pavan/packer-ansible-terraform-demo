@@ -40,7 +40,7 @@ pipeline {
           stage('Build AMI') {
                 steps {
                     dir('./packer'){
-                     sh 'packer build template.json'
+                     sh 'ls -la; pwd; packer build template.json'
                     }
                 }
           }
@@ -48,7 +48,7 @@ pipeline {
                 steps {
                     script {
                        timeout(time: 2, unit: 'MINUTES') {
-                          input(id: "Deploy Gate", message: "Want to Destroy ${params.project_name}?", ok: 'Deploy??')
+                          input(id: "Deploy Gate", message: "Want to Deploy ${params.project_name}?", ok: 'Deploy??')
                        }
                     }
                 }
@@ -58,7 +58,7 @@ pipeline {
                  dir('./terraform'){
 
                  sh  """
-                     terraform init; terraform plan; terraform apply -auto-approve -input=false
+                     terraform init; terraform plan; terraform apply -auto-approve -var 'access_key=$access_key' -var 'secret_key=$secret_key'
                      """
 
                  }
